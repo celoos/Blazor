@@ -6,6 +6,7 @@
     <!-- Local alternative to <RunArguments>blazor serve</RunArguments> -->
     <RunCommand>dotnet</RunCommand>
     <RunArguments>run --project ../../src/Microsoft.AspNetCore.Blazor.Cli serve</RunArguments>
+    <Configurations>Debug;Release;DebugNoVSIX;ReleaseNoVSIX</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

@@ -13,7 +13,17 @@
     <NuspecFile>Microsoft.AspNetCore.Blazor.Build.nuspec</NuspecFile>
     <IntermediatePackDir>$(MSBuildProjectDirectory)/bin/$(Configuration)/publish/</IntermediatePackDir>
     <PublishDir>$(IntermediatePackDir)$(TargetFramework)/</PublishDir>
+
+    <!-- 
+      This is a workaround for a nuget bug. If we ever need a symbols package for this will have to author that manually.
+      Issue: nuget/Home#4726
+    -->
+    <IncludeSymbols>false</IncludeSymbols>
   </PropertyGroup>
+
+  <Target Name="_GrossWorkaround" AfterTargets="_GetOutputItemsFromPack">
+    <_OutputPackItems Remove="%(_OutputPackItems.Identity)" Condition="%(_OutputPackItems.Identity.EndsWith('.symbols.nupkg'))=='true'"/>
+  </Target>
 
   <!-- Executes /t:Publish for all target frameworks before packing-->
   <Target Name="PublishAll" BeforeTargets="_IntermediatePack">

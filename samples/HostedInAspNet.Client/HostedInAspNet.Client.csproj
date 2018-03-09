@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Exe</OutputType>
+    <Configurations>Debug;Release;DebugNoVSIX;ReleaseNoVSIX</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
